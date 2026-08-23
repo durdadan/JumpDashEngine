@@ -92,9 +92,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Mega Man W"
-config/description="Mega Man W. 
-There is a new Scientist in town. Help Mega man take her down!"
+config/name="JumpDashEngine"
+config/description="Blank Slate Engine to play with mega man"
 run/main_scene="res://scenes/menus/logo_splash_screen/logo_splash_screen.tscn"
 config/use_custom_user_dir=true
 boot_splash/show_image=false
@@ -102,7 +101,7 @@ boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
 config/is_demo=false
-config/version="1.0.5"
+config/version="0.0.0"
 config/controller_mappings="cntrl"
 config/config="opt"
 config/statistics="player"
