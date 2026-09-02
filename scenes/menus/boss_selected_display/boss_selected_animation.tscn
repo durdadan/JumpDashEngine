@@ -421,7 +421,6 @@ shader_param/direction_b = Vector2( -0.7, -0.3 )
 
 [node name="BossSelectedAnimation" type="Node2D"]
 script = ExtResource( 3 )
-boss = "unknown"
 
 [node name="background" type="ColorRect" parent="."]
 margin_right = 256.0
