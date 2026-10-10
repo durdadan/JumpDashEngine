@@ -1,13 +1,11 @@
 extends Node2D
 
-#-------------------------------------------------
-#      Constants
-#-------------------------------------------------
 
 #-------------------------------------------------
 #      Signals
 #-------------------------------------------------
 signal closed()
+
 #-------------------------------------------------
 #      Properties
 #-------------------------------------------------
@@ -21,11 +19,10 @@ var _section_1: Section
 var _section_2: Section
 var _player: Player
 var _reset_lock := true
-#-------------------------------------------------
-#      Processes
-#-------------------------------------------------
-func _ready() -> void:
+var is_animating = false
 
+
+func _ready():
 	if Engine.editor_hint:
 		$arrow.show()
 	else:
@@ -39,75 +36,61 @@ func _ready() -> void:
 #-------------------------------------------------
 #      Public Methods
 #-------------------------------------------------
-func locked_collision(value:bool):
+
+func locked_collision(value: bool):
 	locked = value
 	if value:
-		$locked_shape/CollisionShape2D.set_deferred("disabled",false)
+		$locked_shape/CollisionShape2D.set_deferred("disabled", false)
 	else:
-		$locked_shape/CollisionShape2D.set_deferred("disabled",true)
+		$locked_shape/CollisionShape2D.set_deferred("disabled", true)
 
-func open() -> void:
+func open():
 	get_tree().paused = true
 	$"Sprite/AnimationPlayer".play("Open_and_Close")
 	$AudioStreamPlayer.play()
 	open_door()
 
-func close() -> void:
+func close():
 	emit_signal("closed")
 	$"Sprite/AnimationPlayer".play_backwards("Open_and_Close")
 	$AudioStreamPlayer.play()
 	close_door()
 
-func open_door() -> void:
+func open_door():
 	$StaticBody2D.set_collision_layer_bit(Bitmask.stage, false)
 
-func close_door() -> void:
+func close_door():
 	$StaticBody2D.set_collision_layer_bit(Bitmask.stage, true)
 
 func is_door_open() -> bool:
 	return !$StaticBody2D.get_collision_layer_bit(Bitmask.stage)
-#-------------------------------------------------
-#      Private Methods
-#-------------------------------------------------
+
+
 #-------------------------------------------------
 #      Connections
 #-------------------------------------------------
-func on_restarted() -> void:
-	if _reset_lock:
-		temp_lock = false
-		locked = false
 
-func on_checkpoint_reached() -> void:
+func on_restarted():
+	if _reset_lock:
+		locked = false
+		temp_lock = false
+
+func on_checkpoint_reached():
 	if locked:
 		_reset_lock = false
 
-func on_section_entered(section: Node2D) -> void:
+func on_section_entered(section: Node2D):
 	if section.owner is Section:
 		if not _section_1:
 			_section_1 = section.owner as Section
 		elif not _section_2:
 			_section_2 = section.owner as Section
 
-func on_entered(body: PhysicsBody2D) -> void:
-	if not body is Player or (locked or temp_lock):
-		return
-	_player = body as Player
-	Physics.is_in_pausible_state = false
-	open_door()
-	open()
+func on_entered(body: PhysicsBody2D):
+	assert(false, "Implementing classes must define method `on_entered`")
 
-func on_exited(body: PhysicsBody2D) -> void:
-	Physics.is_in_pausible_state = true
-	if not body is Player or (locked or temp_lock):
-		if is_door_open():
-			close()
-			locked = true
-			_player = null
-			return
-	if is_door_open():
-		close()
-		locked = true
-
+func on_exited(body: PhysicsBody2D):
+	assert(false, "Implementing classes must define method `on_exited`")
 
 func on_animation_finished(anim_name: String) -> void:
 	if _player and is_door_open():

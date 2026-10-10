@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/images/tilesets/example_level/napalm_scenery/napalm_scenery.tres" type="Texture" id=2]
 [ext_resource path="res://scenes/stages/assets/destructable_block/destructable_block.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/stages/assets/water/water.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/stages/assets/boss_doors/directional doors/boss_door_right.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/stages/assets/boss_doors/directional_doors/boss_door_h.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/bosses/plug_man/plug_man.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/players/Mega Man/camera/player_camera.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/stages/effects/fade_effect.tscn" type="PackedScene" id=8]

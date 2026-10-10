@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/audio/environment/boss_door.ogg" type="AudioStream" id=2]
 [ext_resource path="res://assets/images/sprites/level_assets/arrows/right.png" type="Texture" id=3]
 [ext_resource path="res://scenes/themes/simple_color_replace.gdshader" type="Shader" id=4]
-[ext_resource path="res://scenes/stages/assets/boss_doors/directional doors/boss_door_right.gd" type="Script" id=5]
+[ext_resource path="res://scenes/stages/assets/boss_doors/directional_doors/boss_door_h.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
