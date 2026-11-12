@@ -493,6 +493,8 @@ func _on_died() -> void:
 		stage_playtime = 0.0
 	stop_shaking_screen()
 	yield(get_tree().create_timer(DEATH_DELAY), "timeout")
+	# NOTE: needs to be after timeout else camera will jump
+	current_camera.stop_scroll()
 	did_restart = true
 	emit_signal("player_died")
 
